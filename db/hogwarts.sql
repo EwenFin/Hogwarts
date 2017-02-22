@@ -15,3 +15,5 @@ CREATE TABLE students(
   house_id INT4 REFERENCES houses(id) ON DELETE CASCADE,
   age INT4
 );
+
+

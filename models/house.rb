@@ -17,6 +17,6 @@ class House
   def save
     sql = "INSERT INTO houses (name, logo_url) VALUES ('#{@name}', '#{@logo_url}') RETURNING id"
     house = SqlRunner.run(sql).first
-    @id= house['id'].to_i
+    @id = house['id'].to_i
   end
 end
