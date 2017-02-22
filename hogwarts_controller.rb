@@ -12,17 +12,15 @@ get '/students/new' do
 erb(:new)
 end
 
-
 get '/students/:id' do
   @student = Student.return_by_id(params[:id])
   erb(:show)
 end
 
-
-
 post '/students' do
 @student = Student.new(params)
-@student.save()
-erb(:create)
+@student.save
+redirect to '/students'
+# erb(:create)
 end
 

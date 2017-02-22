@@ -45,9 +45,13 @@ class Student
     return result
   end
 
+
+
   def house
-    sql = "SELECT * FROM houses INNER JOIN students ON houses.id = students.house_id WHERE student.id = #{@id}"
-    house = SqlRunner.run(sql)
-    return house['name']
-  end
+     sql = "SELECT * FROM houses INNER JOIN students ON students.house_id = houses.id WHERE students.id = #{@id}"
+     house = SqlRunner.run(sql).first
+     return house['name']
+   end
+
+  
 end
