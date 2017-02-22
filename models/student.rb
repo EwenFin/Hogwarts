@@ -43,8 +43,11 @@ class Student
     students = SqlRunner.run(sql)
     result = students.map {|student| Student.new(student)}
     return result
-
   end
 
-
+  def house
+    sql = "SELECT * FROM houses INNER JOIN students ON houses.id = students.house_id WHERE student.id = #{@id}"
+    house = SqlRunner.run(sql)
+    return house['name']
+  end
 end

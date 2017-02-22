@@ -19,4 +19,24 @@ class House
     house = SqlRunner.run(sql).first
     @id = house['id'].to_i
   end
+
+  def self.all
+    sql = "SELECT * FROM houses"
+    return self.get_many(sql)
+  end
+
+
+  def self.return_by_id(id_required)
+    sql = "SELECT * FROM houses WHERE id = #{id_required}"
+    house = SqlRunner.run(sql)
+    result = House.new(house.first)
+    return result
+  end
+
+
+  def self.get_many(sql)
+    houses = SqlRunner.run(sql)
+    result = houses.map {|house| House.new(house)}
+    return result
+  end
 end
