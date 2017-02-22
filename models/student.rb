@@ -33,8 +33,9 @@ class Student
   end
 
   def self.return_by_id(id_required)
-    sql = "SELECT * FROM students WHERE id = #{id_requred}"
-    SqlRunner.run(sql)
+    sql = "SELECT * FROM students WHERE id = #{id_required}"
+    student = SqlRunner.run(sql)
+    result = Student.new(student.first)
   end
 
 
